@@ -1,0 +1,28 @@
+CREATE DATABASE classroom_management;
+
+USE classroom_management;
+
+CREATE TABLE Course (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    instructor VARCHAR(255),
+    schedule VARCHAR(255),
+    credits INT
+);
+
+CREATE TABLE Student (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    address VARCHAR(255)
+);
+
+CREATE TABLE Grade (
+    grade_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT,
+    student_id INT,
+    grade FLOAT,
+    FOREIGN KEY (course_id) REFERENCES Course(course_id),
+    FOREIGN KEY (student_id) REFERENCES Student(student_id)
+);
